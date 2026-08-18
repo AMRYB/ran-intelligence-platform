@@ -1,0 +1,580 @@
+version: "3.9"
+
+networks:
+  ran-network:
+    driver: overlay
+    attachable: true
+
+services:
+
+  # =========================================================
+  # ZOOKEEPER
+  # =========================================================
+
+  zookeeper1:
+    image: zookeeper:3.8
+    hostname: zookeeper1
+
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=zookeeper1:2888:3888;2181 server.2=zookeeper2:2888:3888;2181 server.3=zookeeper3:2888:3888;2181
+
+    configs:
+      - source: zookeeper_config
+        target: /conf/zoo.cfg
+
+    volumes:
+      - zookeeper1-data:/data
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 1
+
+  zookeeper2:
+    image: zookeeper:3.8
+    hostname: zookeeper2
+
+    environment:
+      ZOO_MY_ID: 2
+      ZOO_SERVERS: server.1=zookeeper1:2888:3888;2181 server.2=zookeeper2:2888:3888;2181 server.3=zookeeper3:2888:3888;2181
+
+    configs:
+      - source: zookeeper_config
+        target: /conf/zoo.cfg
+
+    volumes:
+      - zookeeper2-data:/data
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 2
+
+  zookeeper3:
+    image: zookeeper:3.8
+    hostname: zookeeper3
+
+    environment:
+      ZOO_MY_ID: 3
+      ZOO_SERVERS: server.1=zookeeper1:2888:3888;2181 server.2=zookeeper2:2888:3888;2181 server.3=zookeeper3:2888:3888;2181
+
+    configs:
+      - source: zookeeper_config
+        target: /conf/zoo.cfg
+
+    volumes:
+      - zookeeper3-data:/data
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 3
+
+
+  # =========================================================
+  # KAFKA
+  # =========================================================
+
+  kafka1:
+    image: apache/kafka:latest
+    hostname: kafka1
+
+    configs:
+      - source: kafka1_config
+        target: /opt/kafka/config/server.properties
+
+    volumes:
+      - kafka1-data:/var/lib/kafka/data
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 1
+
+  kafka2:
+    image: apache/kafka:latest
+    hostname: kafka2
+
+    configs:
+      - source: kafka2_config
+        target: /opt/kafka/config/server.properties
+
+    volumes:
+      - kafka2-data:/var/lib/kafka/data
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 2
+
+  kafka3:
+    image: apache/kafka:latest
+    hostname: kafka3
+
+    configs:
+      - source: kafka3_config
+        target: /opt/kafka/config/server.properties
+
+    volumes:
+      - kafka3-data:/var/lib/kafka/data
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 3
+
+  kafka4:
+    image: apache/kafka:latest
+    hostname: kafka4
+
+    configs:
+      - source: kafka4_config
+        target: /opt/kafka/config/server.properties
+
+    volumes:
+      - kafka4-data:/var/lib/kafka/data
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 4
+
+  kafka5:
+    image: apache/kafka:latest
+    hostname: kafka5
+
+    configs:
+      - source: kafka5_config
+        target: /opt/kafka/config/server.properties
+
+    volumes:
+      - kafka5-data:/var/lib/kafka/data
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 5
+
+
+  # =========================================================
+  # SPARK MASTER
+  # =========================================================
+
+  spark-master1:
+    image: bitnami/spark:latest
+    hostname: spark-master1
+
+    configs:
+      - source: spark_defaults
+        target: /opt/bitnami/spark/conf/spark-defaults.conf
+      - source: spark_env
+        target: /opt/bitnami/spark/conf/spark-env.sh
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 1
+
+  spark-master2:
+    image: bitnami/spark:latest
+    hostname: spark-master2
+
+    configs:
+      - source: spark_defaults
+        target: /opt/bitnami/spark/conf/spark-defaults.conf
+      - source: spark_env
+        target: /opt/bitnami/spark/conf/spark-env.sh
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 2
+
+
+  # =========================================================
+  # SPARK WORKERS
+  # =========================================================
+
+  spark-worker1:
+    image: bitnami/spark:latest
+    hostname: spark-worker1
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 1
+
+  spark-worker2:
+    image: bitnami/spark:latest
+    hostname: spark-worker2
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 2
+
+  spark-worker3:
+    image: bitnami/spark:latest
+    hostname: spark-worker3
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 3
+
+  spark-worker4:
+    image: bitnami/spark:latest
+    hostname: spark-worker4
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 4
+
+  spark-worker5:
+    image: bitnami/spark:latest
+    hostname: spark-worker5
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 5
+
+
+  # =========================================================
+  # HDFS NAMENODES
+  # =========================================================
+
+  namenode1:
+    image: apache/hadoop:latest
+    hostname: namenode1
+
+    configs:
+      - source: hadoop_core_site
+        target: /opt/hadoop/etc/hadoop/core-site.xml
+      - source: hadoop_hdfs_site
+        target: /opt/hadoop/etc/hadoop/hdfs-site.xml
+      - source: hadoop_workers
+        target: /opt/hadoop/etc/hadoop/workers
+
+    volumes:
+      - namenode1-data:/hadoop/dfs/name
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 1
+
+  namenode2:
+    image: apache/hadoop:latest
+    hostname: namenode2
+
+    configs:
+      - source: hadoop_core_site
+        target: /opt/hadoop/etc/hadoop/core-site.xml
+      - source: hadoop_hdfs_site
+        target: /opt/hadoop/etc/hadoop/hdfs-site.xml
+      - source: hadoop_workers
+        target: /opt/hadoop/etc/hadoop/workers
+
+    volumes:
+      - namenode2-data:/hadoop/dfs/name
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 2
+
+
+  # =========================================================
+  # HDFS DATANODES
+  # =========================================================
+
+  datanode1:
+    image: apache/hadoop:latest
+    hostname: datanode1
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 1
+
+  datanode2:
+    image: apache/hadoop:latest
+    hostname: datanode2
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 2
+
+  datanode3:
+    image: apache/hadoop:latest
+    hostname: datanode3
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 3
+
+  datanode4:
+    image: apache/hadoop:latest
+    hostname: datanode4
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 4
+
+  datanode5:
+    image: apache/hadoop:latest
+    hostname: datanode5
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 5
+
+
+  # =========================================================
+  # JOURNAL NODES
+  # =========================================================
+
+  journalnode1:
+    image: apache/hadoop:latest
+    hostname: journalnode1
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 1
+
+  journalnode2:
+    image: apache/hadoop:latest
+    hostname: journalnode2
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 2
+
+  journalnode3:
+    image: apache/hadoop:latest
+    hostname: journalnode3
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 3
+
+
+  # =========================================================
+  # CLICKHOUSE
+  # =========================================================
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    hostname: clickhouse
+
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+
+    volumes:
+      - clickhouse-data:/var/lib/clickhouse
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 1
+
+
+  # =========================================================
+  # AIRFLOW
+  # =========================================================
+
+  airflow:
+    image: apache/airflow:latest
+    hostname: airflow
+
+    volumes:
+      - airflow-data:/opt/airflow
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 1
+
+
+  # =========================================================
+  # GRAFANA
+  # =========================================================
+
+  grafana:
+    image: grafana/grafana:latest
+    hostname: grafana
+
+    ports:
+      - "3000:3000"
+
+    volumes:
+      - grafana-data:/var/lib/grafana
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 1
+
+
+  # =========================================================
+  # PROMETHEUS
+  # =========================================================
+
+  prometheus:
+    image: prom/prometheus:latest
+    hostname: prometheus
+
+    ports:
+      - "9090:9090"
+
+    configs:
+      - source: prometheus_config
+        target: /etc/prometheus/prometheus.yml
+
+    volumes:
+      - prometheus-data:/prometheus
+
+    networks:
+      - ran-network
+
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node_id == 3
+
+configs:
+  zookeeper_config:
+    file: ./configs/zookeeper/zoo.cfg
+  kafka1_config:
+    file: ./configs/kafka/kafka1.properties
+  kafka2_config:
+    file: ./configs/kafka/kafka2.properties
+  kafka3_config:
+    file: ./configs/kafka/kafka3.properties
+  kafka4_config:
+    file: ./configs/kafka/kafka4.properties
+  kafka5_config:
+    file: ./configs/kafka/kafka5.properties
+  spark_defaults:
+    file: ./configs/spark/spark-defaults.conf
+  spark_env:
+    file: ./configs/spark/spark-env.sh
+  hadoop_core_site:
+    file: ./configs/hadoop/core-site.xml
+  hadoop_hdfs_site:
+    file: ./configs/hadoop/hdfs-site.xml
+  hadoop_workers:
+    file: ./configs/hadoop/workers
+  prometheus_config:
+    file: ./configs/prometheus/prometheus.yml
+
+volumes:
+  zookeeper1-data:
+  zookeeper2-data:
+  zookeeper3-data:
+  kafka1-data:
+  kafka2-data:
+  kafka3-data:
+  kafka4-data:
+  kafka5-data:
+  namenode1-data:
+  namenode2-data:
+  clickhouse-data:
+  airflow-data:
+  grafana-data:
+  prometheus-data:

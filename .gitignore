@@ -1,0 +1,18 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+*.log
+.pytest_cache/
+.mypy_cache/
+
+# Runtime and generated state
+data/Raw/*.csv
+data/processed/
+data/output/
+models/
+
+# Local infrastructure state
+*.pid
+*.swp
+.DS_Store
