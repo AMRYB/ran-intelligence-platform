@@ -204,9 +204,9 @@ flowchart TB
 | Machine | Swarm Role | Services |
 |---|---|---|
 | `mohamed` | Manager (Leader) | Zookeeper-1, JournalNode-1, **Active NameNode**, ZKFC-1, Kafka-1, **Spark Master-1**, DataNode-1, Spark Worker-1 |
-| `abdullah` | Manager | Zookeeper-2, JournalNode-2, **Standby NameNode**, ZKFC-2, Kafka-2, **Spark Master-2**, DataNode-2, Spark Worker-2 |
-| `sharawy` | Manager | Zookeeper-3, JournalNode-3, Kafka-3, DataNode-3, Spark Worker-3 |
-| `bodok` | Worker | Kafka-4, **ClickHouse-1**, DataNode-4, Spark Worker-4 |
+| `bodok` | Manager | Zookeeper-2, JournalNode-2, **Standby NameNode**, ZKFC-2, Kafka-2, **Spark Master-2**, DataNode-2, Spark Worker-2 |
+| `abdullah` | Manager | Zookeeper-3, JournalNode-3, Kafka-3, DataNode-3, Spark Worker-3 |
+| `sharawy` | Worker | Kafka-4, **ClickHouse-1**, DataNode-4, Spark Worker-4 |
 | `amr` | Worker | Kafka-5, **ClickHouse-2**, Grafana, Airflow, Prometheus, DataNode-5, Spark Worker-5 |
 
 > **Deliberate trade-off:** the Zookeeper ensemble (3 replicas) coordinates *four* subsystems — Kafka, HDFS ZKFC, Spark HA, and ClickHouse. That's a conscious choice to keep the machine count at 5, with the known cost that losing quorum (2 of 3) impacts all four systems at once.
@@ -217,10 +217,10 @@ flowchart TB
 
 | Role | Member | Core Responsibilities |
 |---|---|---|
-| 👑 **Team Lead / DevOps / Infrastructure Owner** | **Mohamed Abdelkader** | Full architecture design, Docker Swarm management, HDFS HA (Active NameNode + JournalNode-1 + Zookeeper-1), Kafka Broker-1, Spark Master-1 |
-| 🐘 **HDFS Standby & Failover Engineer** | **Abdullah** | HDFS Standby NameNode, ZKFC-2, JournalNode-2, Zookeeper-2, Kafka Broker-2, Spark Master-2 |
-| ⚡ **Kafka & Streaming Engineer** | **Sharawy** | Zookeeper-3, JournalNode-3, Kafka Broker-3, Spark Worker-3 |
-| 🗄️ **ClickHouse & Data Engineer** | **Bodok** | ClickHouse Replica-1, Kafka Broker-4, DataNode-4, Spark Worker-4 |
+|  Infrastructure Owner** | **Mohamed** | Full architecture design, Docker Swarm management, HDFS HA (Active NameNode + JournalNode-1 + Zookeeper-1), Kafka Broker-1, Spark Master-1 |
+| 🐘 **HDFS Standby & Failover Engineer** | **Bodok** | HDFS Standby NameNode, ZKFC-2, JournalNode-2, Zookeeper-2, Kafka Broker-2, Spark Master-2 |
+| ⚡ **Kafka & Streaming Engineer** | **Abdullah** | Zookeeper-3, JournalNode-3, Kafka Broker-3, Spark Worker-3 |
+| 🗄️ **ClickHouse & Data Engineer** | **Sharawy** | ClickHouse Replica-1, Kafka Broker-4, DataNode-4, Spark Worker-4 |
 | 📊 **Monitoring & Orchestration Engineer** | **Amr** | Grafana, Apache Airflow, Prometheus, ClickHouse Replica-2, Kafka Broker-5 |
 
 ---
