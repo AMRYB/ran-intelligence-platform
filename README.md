@@ -13,6 +13,10 @@
    <img src="https://img.shields.io/badge/Docker%20Swarm-deployment-1864ab?style=for-the-badge&logo=docker&logoColor=white" alt="Docker Swarm">
 </p>
 
+<p align="center">
+   <img src="Kafka/producer/RAN%20Behavioral%20Intelligence.png" alt="Ran Intelligence Platform overview showing the RAN problem, solution, data flow, technology stack, processing strategy, and expected impact" width="100%">
+</p>
+
 > **Project status:** development and cluster-integration scaffold. The repository contains the platform layout, configuration, sample data, and core processing scripts; several bootstrap steps are still required before production operation.
 
 ## What This Project Does
