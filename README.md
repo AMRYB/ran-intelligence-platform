@@ -1,691 +1,982 @@
-# 📡 RAN Behavioral Intelligence & Predictive Network Operations Platform
+📡 RAN Behavioral Intelligence Big Data Platform
 
 <p align="center">
-
-  <img
-    src="https://commons.wikimedia.org/wiki/Special:Redirect/file/5G%20cell%20tower.JPG"
-    alt="5G Cell Tower"
-    width="100%"
-  />
-
-</p>
-
-<h3 align="center">
-From Raw RAN Telemetry → Real-Time Intelligence → Proactive Network Operations
-</h3>
-
-<p align="center">
-
-[![Kafka](https://img.shields.io/badge/Apache%20Kafka-3.x-black?style=for-the-badge&logo=apachekafka)](https://kafka.apache.org/)
-[![Spark](https://img.shields.io/badge/Apache%20Spark-3.x-orange?style=for-the-badge&logo=apachespark)](https://spark.apache.org/)
-[![HDFS](https://img.shields.io/badge/Hadoop-HDFS-yellow?style=for-the-badge&logo=apachehadoop)](https://hadoop.apache.org/)
-[![ClickHouse](https://img.shields.io/badge/ClickHouse-Analytics-E34F26?style=for-the-badge&logo=clickhouse)](https://clickhouse.com/)
-[![Docker](https://img.shields.io/badge/Docker-Swarm-2496ED?style=for-the-badge&logo=docker)](https://www.docker.com/)
-[![Airflow](https://img.shields.io/badge/Airflow-Orchestration-017CEE?style=for-the-badge&logo=apacheairflow)](https://airflow.apache.org/)
-[![Grafana](https://img.shields.io/badge/Grafana-Monitoring-F46800?style=for-the-badge&logo=grafana)](https://grafana.com/)
-[![Python](https://img.shields.io/badge/Python-ML%20%26%20Streaming-3776AB?style=for-the-badge&logo=python)](https://www.python.org/)
-[![Tailscale](https://img.shields.io/badge/Tailscale-Mesh%20VPN-black?style=for-the-badge&logo=tailscale)](https://tailscale.com/)
-
+  <img src="docs/assets/ran-intelligence-cover.png" alt="RAN Behavioral Intelligence Platform cover" width="100%" />
 </p>
 
 <p align="center">
-
-**Analyze · Detect · Prioritize · Predict · Prevent**
-
+  <strong>From Raw RAN Telemetry → Behavioral Intelligence → Proactive Network Operations</strong>
 </p>
 
----
+<p align="center">
+  <a href="https://kafka.apache.org/"><img src="https://img.shields.io/badge/Apache%20Kafka-3.x-000000?style=for-the-badge&logo=apachekafka&logoColor=white" alt="Apache Kafka"></a>
+  <a href="https://spark.apache.org/"><img src="https://img.shields.io/badge/Apache%20Spark-3.x-E25A1C?style=for-the-badge&logo=apachespark&logoColor=white" alt="Apache Spark"></a>
+  <a href="https://hadoop.apache.org/"><img src="https://img.shields.io/badge/Hadoop-HDFS-FFCC00?style=for-the-badge&logo=apachehadoop&logoColor=black" alt="HDFS"></a>
+  <a href="https://clickhouse.com/"><img src="https://img.shields.io/badge/ClickHouse-Analytics-E34F26?style=for-the-badge&logo=clickhouse&logoColor=white" alt="ClickHouse"></a>
+  <a href="https://www.docker.com/"><img src="https://img.shields.io/badge/Docker-Swarm-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker Swarm"></a>
+  <a href="https://grafana.com/"><img src="https://img.shields.io/badge/Grafana-Observability-F46800?style=for-the-badge&logo=grafana&logoColor=white" alt="Grafana"></a>
+  <a href="https://tailscale.com/"><img src="https://img.shields.io/badge/Tailscale-Mesh%20VPN-111111?style=for-the-badge&logo=tailscale&logoColor=white" alt="Tailscale"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-Streaming%20%26%20ML-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"></a>
+</p>
 
-## 🧭 Navigate
+<p align="center">
+  <b>Analyze · Detect · Prioritize · Predict · Prevent · Optimize</b>
+</p>
 
-**[📖 Story](#-the-story)** •
-**[⚠️ Problem](#️-the-problem)** •
-**[💡 Solution](#-our-solution)** •
-**[🏗️ Architecture](#️-architecture)** •
-**[📡 Data Flow](#-end-to-end-data-flow)** •
-**[🖥️ Cluster](#️-cluster-topology)** •
-**[📊 Data Model](#-telemetry-data)** •
-**[🚀 Deployment](#-getting-started)** •
-**[🧪 HA Testing](#-fault-tolerance-testing)**
+🧭 Navigate
 
----
+📖 The Story
 
-# 📖 The Story
+⚠️ The Problem
 
-Modern cellular networks generate enormous amounts of telemetry.
+💡 The Solution
 
-Every cell and sector continuously reports measurements such as:
+🏗️ Lambda Architecture
 
-- 📶 Data volume
-- 👥 Active users
-- 🔗 RRC users
-- 📊 Resource Block utilization
-- 📡 CQI
-- ⚡ Radio Unit energy consumption
-- 🧠 Baseband energy consumption
-- 📈 MIMO performance
+🔄 End-to-End Data Flow
 
-Our dataset represents this behavior as **periodic RAN performance measurements**.
+📡 Telemetry Data
 
-Each cell/sector reports its performance approximately every **15 minutes**.
+⚡ Kafka Ingestion
 
-The problem is not collecting the data.
+🔥 Spark Processing
 
-The problem is answering:
+🐘 HDFS Data Lake
 
-> **"What is happening inside the network, and which cells require attention?"**
+🗄️ ClickHouse Serving Layer
 
----
+🧠 Behavioral Intelligence
 
-# ⚠️ The Problem
+📊 Observability
 
-Traditional network monitoring often depends heavily on fixed thresholds.
+🖥️ Cluster Topology
+
+🧪 Fault-Tolerance Testing
+
+📁 Repository Structure
+
+🚀 Getting Started
+
+🔮 Future Vision
+
+👥 Team
+
+📖 The Story
+
+Modern RAN infrastructure constantly produces performance measurements.
+
+Every base station and sector tells us something about the network:
+
+📶 traffic and data volume
+
+👥 active users
+
+🔗 RRC connections
+
+📊 resource-block utilization
+
+📡 CQI and radio quality
+
+⚡ radio-unit and baseband energy consumption
+
+🧠 MIMO performance
+
+🔄 technology-specific KPIs for 2G, 4G, and 5G
+
+Our source data is historical, but the platform should behave as if the network is live.
+
+So the project starts with a simple idea:
+
+Take periodic RAN performance measurements, replay them as events, and build a distributed intelligence layer that can understand what is happening now while preserving the complete historical picture.
+
+That idea becomes a full Big Data platform.
+
+📡 RAN Measurements
+        ↓
+🐍 Telemetry Replay
+        ↓
+⚡ Kafka
+        ↓
+┌───────────────────────────────┐
+│                               │
+▼                               ▼
+🔥 Speed Layer              🐘 Batch Layer
+Spark Streaming             HDFS + Spark Batch
+│                               │
+└──────────────┬────────────────┘
+               ▼
+        🗄️ ClickHouse
+               ↓
+        🧠 Intelligence
+               ↓
+          📊 Grafana
+               ↓
+       👨‍💻 Network Operations
+
+⚠️ The Problem
+
+A telecom NOC can easily receive thousands of KPI measurements and alerts, but raw measurements do not automatically become network intelligence.
+
+A static rule such as:
+
+IF RB Utilization > 80%
+THEN ALERT
+
+is often not enough.
+
+A value that is normal for one cell may be abnormal for another, and degradation usually appears through multiple changing KPIs before a hard failure occurs.
 
 For example:
 
-```text
-IF RB Utilization > 80%
-        ↓
-     ALERT
-But real networks are more complicated.
-A KPI that is normal for one cell may be abnormal for another.
-A cell may also show degradation through a combination of signals:
-↓ Data Volume
-+ ↑ Active Users
-+ ↑ RB Utilization
-+ ↓ CQI
-        ↓
-Potential Cell Degradation
-Therefore, we need more than individual threshold alerts.
-We need a platform that can:
-Observe
+          ↓ Data Volume
+          ↑ Active Users
+          ↑ RB Utilization
+          ↓ CQI
+          ↑ Energy Consumption
+               │
+               ▼
+       ⚠️ Possible degradation
+
+The platform therefore focuses on a more useful question:
+
+Is this cell behaving differently from its own normal behavior, and how urgently should an engineer investigate it?
+
+💡 The Solution
+
+The platform combines distributed ingestion, Lambda-style processing, historical storage, analytical serving, and behavioral analytics.
+
+📡 Observe
    ↓
-Understand
+⚡ Ingest
    ↓
-Detect
+🐘 Preserve History
    ↓
-Prioritize
+🔥 Process in Real Time + Batch
    ↓
-Predict
+🧠 Detect Abnormal Behavior
    ↓
-Act
-💡 Our Solution
-The RAN Behavioral Intelligence Platform is a distributed Big Data platform designed to transform raw RAN telemetry into actionable network intelligence.
-The platform provides:
-📡 Data Ingestion
-Read historical RAN CSV datasets and simulate a real telemetry source.
-The producer does not simply send the whole CSV immediately.
-Instead:
-CSV
- ↓
-Parse Timestamp
- ↓
-Group Records by Timestamp
- ↓
-Wait / Simulate Time
- ↓
-Publish Event
- ↓
-Kafka
-This allows historical data to behave like a real streaming source.
-⚡ Real-Time Streaming
-Telemetry events are published to a replicated Kafka cluster.
-RAN Producer
-     │
-     ▼
-┌───────────────────────┐
-│   Kafka Cluster       │
-│                       │
-│ Broker 1              │
-│ Broker 2              │
-│ Broker 3              │
-│ Broker 4              │
-│ Broker 5              │
-└───────────────────────┘
-The topic used by the platform is:
-ran-telemetry
-Current target configuration:
-Partitions       = 5
-Replication      = 3
-Brokers          = 5
-🏗️ Architecture
-High-Level Architecture
-Mermaid
+🛡️ Score Risk
+   ↓
+📊 Visualize
+   ↓
+👨‍💻 Prioritize Action
+
+MVP focus
+
+The current MVP focuses on:
+
+telemetry ingestion
+
+timestamp-based streaming simulation
+
+distributed Kafka ingestion
+
+raw-data preservation
+
+real-time processing
+
+baseline anomaly detection
+
+analytical serving
+
+cluster observability
+
+high-availability testing
+
+The long-term goal is predictive failure and degradation intelligence.
+
+🏗️ Lambda Architecture
+
+The architecture is designed around two processing paths that share the same telemetry source.
+
 flowchart LR
+    A["📡 RAN / PM Data"] --> B["🐍 Python Producer"]
+    B --> C["⚡ Kafka\nran-telemetry"]
 
-    A["📡 RAN / PM Data<br/>LTE · NR · GSM"]
+    C --> D["🔥 Speed Layer\nSpark Structured Streaming"]
+    C --> E["🐘 Batch Layer\nHDFS Raw Data Lake"]
 
-    B["🐍 Python Producer<br/>CSV → Events"]
+    E --> F["🔥 Spark Batch"]
 
-    C["⚡ Apache Kafka<br/>5 Brokers<br/>5 Partitions<br/>RF = 3"]
+    D --> G["🧠 Real-Time Features\nAnomaly / Risk"]
+    F --> H["📚 Historical Features\nAggregations / ML"]
 
-    D["🐘 HDFS<br/>Raw Data Lake<br/>Replication = 3"]
-
-    E["🔥 Spark Structured Streaming<br/>Real-Time Processing"]
-
-    F["🔥 Spark Batch<br/>Historical Processing"]
-
-    G["🗄️ ClickHouse<br/>Analytical Store"]
-
-    H["🧠 ML / Behavioral Analytics<br/>Anomaly Detection"]
-
-    I["🛡️ Risk Scoring<br/>Cell Prioritization"]
-
-    J["📊 Grafana<br/>NOC Dashboard"]
-
-    A --> B
-    B --> C
-
-    C --> D
-    C --> E
-
-    D --> F
-    F --> G
-
-    E --> G
-    E --> H
-
-    G --> H
+    G --> I["🗄️ ClickHouse"]
     H --> I
 
-    I --> J
+    I --> J["📊 Grafana"]
     G --> J
+
+⚡ Speed Layer
+
+The Speed Layer answers:
+
+What is happening right now?
+
+Kafka
+  ↓
+Spark Structured Streaming
+  ↓
+Parsing / Validation
+  ↓
+Real-Time KPIs
+  ↓
+Anomaly Detection
+  ↓
+Risk / Alerts
+  ↓
+ClickHouse / Grafana
+
+🐘 Batch Layer
+
+The Batch Layer answers:
+
+What happened historically, and what can we learn from it?
+
+Kafka / Raw Events
+       ↓
+      HDFS
+       ↓
+  Spark Batch
+       ↓
+Historical KPIs
+       ↓
+Features / Aggregations
+       ↓
+ML / Analytics
+       ↓
+ClickHouse
+
+🗄️ Serving Layer
+
+The Serving Layer turns processed data into fast, queryable outputs.
+
+Speed Results ──┐
+                ├──→ ClickHouse ──→ Grafana
+Batch Results ──┘
+
 🔄 End-to-End Data Flow
-The complete journey of a telemetry record looks like this:
-┌───────────────┐
-│ 📡 RAN DATA   │
-│               │
-│ Cell / Sector │
-│ KPI Metrics   │
-└───────┬───────┘
-        │
-        │ Every ~15 minutes
-        ▼
-┌────────────────────┐
-│ 🐍 Python Producer │
-│                    │
-│ CSV → Event        │
-│ Timestamp grouping │
-└────────┬───────────┘
-         │
-         ▼
-┌────────────────────────────┐
-│ ⚡ Apache Kafka             │
-│                            │
-│ ran-telemetry              │
-│ 5 Partitions               │
-│ Replication Factor = 3     │
-└─────────────┬──────────────┘
-              │
-        ┌─────┴──────────────┐
-        │                    │
-        ▼                    ▼
-┌───────────────┐    ┌──────────────────┐
-│ 🐘 HDFS       │    │ 🔥 Spark Stream  │
-│               │    │                  │
-│ Raw / Durable │    │ Real-Time KPIs   │
-└───────┬───────┘    └────────┬─────────┘
-        │                     │
-        ▼                     ▼
-┌───────────────┐    ┌──────────────────┐
-│ 🔥 Spark      │    │ 🧠 ML / Features │
-│ Batch         │    │                  │
-└───────┬───────┘    └────────┬─────────┘
-        │                     │
-        └──────────┬──────────┘
-                   ▼
-          ┌───────────────────┐
-          │ 🗄️ ClickHouse     │
-          │                   │
-          │ Analytical Store  │
-          └─────────┬─────────┘
-                    │
-                    ▼
-          ┌───────────────────┐
-          │ 🛡️ Risk Scoring   │
-          │                   │
-          │ Cell Priorities   │
-          └─────────┬─────────┘
-                    │
-                    ▼
-          ┌───────────────────┐
-          │ 📊 Grafana        │
-          │                   │
-          │ NOC Dashboard     │
-          └───────────────────┘
+
+<p align="center">
+  <img src="docs/assets/data-flow.png" alt="RAN Intelligence data flow" width="100%" />
+</p>
+
+The logical data flow is:
+
+┌──────────────────────┐
+│ 📡 RAN / PM Dataset  │
+│ LTE / NR / GSM       │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│ 🐍 Python Producer   │
+│ CSV → JSON Events    │
+│ timestamp replay     │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│ ⚡ Kafka Cluster     │
+│ ran-telemetry        │
+│ 5 brokers            │
+│ partitions + RF=3    │
+└──────────┬───────────┘
+           │
+      ┌────┴────┐
+      │         │
+      ▼         ▼
+┌──────────┐  ┌─────────────────┐
+│ 🐘 HDFS  │  │ 🔥 Spark Stream │
+│ Raw Data │  │ Real-Time       │
+│ Lake     │  │ Processing      │
+└────┬─────┘  └────────┬────────┘
+     │                 │
+     ▼                 ▼
+┌──────────┐     ┌───────────────┐
+│ 🔥 Spark │     │ 🧠 Anomaly /  │
+│ Batch    │     │ Risk Features │
+└────┬─────┘     └───────┬───────┘
+     │                   │
+     └─────────┬─────────┘
+               ▼
+        ┌──────────────┐
+        │ 🗄️ ClickHouse│
+        └──────┬───────┘
+               ▼
+        ┌──────────────┐
+        │ 📊 Grafana   │
+        │ NOC View     │
+        └──────────────┘
+
 📡 Telemetry Data
-The platform works with RAN-style performance measurements.
-A typical record contains:
-Category
-Example Metrics
-🏢 Identity
-Base Station, Sector
-🕒 Time
-Timestamp
-⚡ Energy
-Radio Unit Energy, Baseband Energy
-👥 Users
-Active Users DL/UL
-🔗 Connections
-RRC Users
-📊 Capacity
-Data Volume DL/UL
-📶 Radio Quality
-CQI Rank 1–4
-📈 Utilization
-RB Utilization
-🧠 Performance
-MIMO Rank
-The dataset contains measurements for multiple radio technologies:
-2G / GSM
-   │
-   ├── TS Available
-   ├── TS Used
-   └── TS Utilization
 
-4G / LTE
-   │
-   ├── Active Users
-   ├── Data Volume
-   ├── RRC Users
-   ├── RB Utilization
-   └── CQI
+The source data is RAN performance telemetry organized around:
 
-5G / NR
-   │
-   ├── Active Users
-   ├── Data Volume
-   ├── RRC Users
-   ├── RB Utilization
-   ├── CQI
-   └── MIMO
-🐍 Telemetry Simulation
-The producer converts historical CSV measurements into simulated streaming events.
-                 CSV Dataset
-                     │
-                     ▼
-              ┌─────────────┐
-              │ Read CSV    │
-              └──────┬──────┘
-                     │
-                     ▼
-              Normalize Fields
-                     │
-                     ▼
-              Parse Timestamp
-                     │
-                     ▼
-          Group by Timestamp
-                     │
-                     ▼
-          ┌──────────────────┐
-          │ Event Generator  │
-          └────────┬─────────┘
-                   │
-             simulated delay
-                   │
-                   ▼
-             Kafka Producer
-                   │
-                   ▼
-              ran-telemetry
+Base Station + Sector + Timestamp + KPIs
+
+A typical row contains identity and time information plus technology-specific performance counters.
+
+5G / NR examples
+
+5G max active users DL
+
+5G max active users UL
+
+5G data volume DL
+
+5G data volume UL
+
+5G max RRC users
+
+5G RB utilization
+
+5G CQI rank 1..4
+
+5G RRC users
+
+5G active users UL / DL
+
+5G MIMO rank DL
+
+4G / LTE examples
+
+4G max active users DL / UL
+
+4G data volume DL / UL
+
+4G max RRC users
+
+4G RB utilization
+
+4G CQI rank 1..4
+
+4G RRC users
+
+4G active users UL / DL
+
+4G MIMO rank DL
+
+2G / GSM examples
+
+2G TS available
+
+2G TS used
+
+2G TS utilization
+
+⚠️ Empty values must not automatically be converted to zero: an empty KPI can mean that the metric or technology is not applicable for that record.
+
+🐍 Telemetry Replay Producer
+
+The source dataset is historical, so the Python producer acts as a time-aware simulator.
+
+CSV Files
+   ↓
+Normalize columns
+   ↓
+Parse timestamps
+   ↓
+Sort by time
+   ↓
+Group records by timestamp
+   ↓
+Build JSON event
+   ↓
+Publish to Kafka
+   ↓
+Wait for simulated interval
+   ↓
+Publish next timestamp group
+
+If the source contains:
+
+10:00
+10:15
+10:30
+10:45
+
+the producer can replay it as:
+
+T+0s   → 10:00 event group
+T+5s   → 10:15 event group
+T+10s  → 10:30 event group
+T+15s  → 10:45 event group
+
+This keeps the original event timestamps while accelerating the simulation.
+
+Kafka key
+
+The recommended producer key is:
+
+base_station + sector
+
 Example:
-{
-  "timestamp": "2023-10-08T06:00:00",
-  "records": [
-    {
-      "base_station": "Site 36",
-      "sector": 1,
-      "network_type": "5G",
-      "data_volume_dl": 4.54,
-      "active_users_dl": 1
-    }
-  ]
-}
-⚡ Kafka Architecture
-The Kafka layer contains five brokers distributed across the physical machines.
-Mermaid
-flowchart TB
 
-    P["🐍 Python Producer"]
+Site36-Sector1
 
-    T["ran-telemetry"]
+This gives Kafka a stable key for partition assignment and helps keep records for the same sector ordered within a partition.
 
-    K1["Kafka Broker 1"]
-    K2["Kafka Broker 2"]
-    K3["Kafka Broker 3"]
-    K4["Kafka Broker 4"]
-    K5["Kafka Broker 5"]
+⚡ Kafka Ingestion
 
-    P --> T
+Kafka is the distributed ingestion backbone of the platform.
 
-    T --> K1
-    T --> K2
-    T --> K3
-    T --> K4
-    T --> K5
-Topic Configuration
-Topic:
-ran-telemetry
+Current logical configuration
 
-Partitions:
+Property
+
+Value
+
+Kafka brokers
+
 5
 
-Replication Factor:
+Topic
+
+ran-telemetry
+
+Replication factor
+
 3
-Each partition has three replicas:
+
+min.insync.replicas target
+
+2
+
+Partitions
+
+5 recommended / configurable
+
+Note: the currently tested topic in the cluster has also been created with 10 partitions. The README treats partition count as a deployment parameter rather than hard-coding the number into application logic.
+
+Why partitions?
+
+Partitions provide parallelism and allow Kafka to distribute the topic across brokers.
+
+                ran-telemetry
+                     │
+     ┌───────┬───────┼───────┬───────┐
+     ▼       ▼       ▼       ▼       ▼
+    P0      P1      P2      P3      P4 ...
+     │       │       │       │       │
+     └───────┴───────┴───────┴───────┘
+                    │
+                    ▼
+             Spark Streaming
+
+A Kafka partition is not permanently bound to one Spark worker. Spark schedules tasks for Kafka partitions across available executors.
+
+Replication
+
+With RF=3, a partition has three copies across brokers.
+
 Partition 0
-    ├── Broker 1
-    ├── Broker 3
-    └── Broker 5
+   ├── Broker A  ← Leader
+   ├── Broker B  ← Replica
+   └── Broker C  ← Replica
 
-Partition 1
-    ├── Broker 2
-    ├── Broker 4
-    └── Broker 1
+If the leader fails and an in-sync replica remains available, Kafka can elect a new leader.
 
-Partition 2
-    ├── Broker 3
-    ├── Broker 5
-    └── Broker 2
-
-...
-This allows Kafka to continue serving data if a broker fails, assuming enough replicas remain in-sync.
 🔥 Spark Processing
-Spark is responsible for both streaming and historical processing.
-Streaming
+
+The Spark cluster is used for both streaming and batch workloads.
+
+Structured Streaming
+
 Kafka
-  │
-  ▼
-Spark Structured Streaming
-  │
-  ├── Parse JSON
-  ├── Validate records
-  ├── Transform KPIs
-  ├── Calculate features
-  └── Detect anomalies
-          │
-          ▼
-      ClickHouse
+  ↓
+Read stream
+  ↓
+Parse / validate
+  ↓
+Transform
+  ↓
+Feature calculations
+  ↓
+Anomaly detection
+  ↓
+ClickHouse / alert path
+
 Batch
-Historical data stored in HDFS can be reprocessed:
+
 HDFS
- │
- ▼
+  ↓
 Spark Batch
- │
- ├── Historical aggregation
- ├── Cell profiling
- ├── Feature engineering
- └── Model preparation
- │
- ▼
-ClickHouse / ML
+  ↓
+Historical transformations
+  ↓
+Aggregations
+  ↓
+Feature engineering
+  ↓
+Model preparation / analytics
+
+Parallelism
+
+The cluster contains:
+
+2 Spark Masters
+5 Spark Workers
+
+The masters provide the control-plane/recovery architecture, while workers provide distributed execution capacity.
+
+🐘 HDFS Data Lake
+
+HDFS is the durable raw-data layer.
+
+Target HA architecture:
+
+                 🟢 Active NameNode
+                        │
+                        │ shared edits
+                        ▼
+                🟡 Standby NameNode
+                        │
+                   ZKFC / ZooKeeper
+                        │
+            ┌───────────┼───────────┐
+            ▼           ▼           ▼
+           JN1         JN2         JN3
+                        │
+                        ▼
+               DataNodes × 5
+
+The purpose of preserving raw telemetry is simple:
+
+If our detection logic changes tomorrow, we should be able to reprocess the past without asking the network to send the data again.
+
+🗄️ ClickHouse Serving Layer
+
+ClickHouse provides the low-latency analytical serving layer for processed telemetry.
+
+It is intended for:
+
+KPI dashboards
+
+Cell-level comparisons
+
+Time-series aggregation
+
+anomaly/risk views
+
+operational analytics
+
+Typical query pattern:
+
+SELECT
+    base_station,
+    sector,
+    avg(data_volume_dl) AS avg_dl_volume,
+    avg(rb_utilization) AS avg_rb_utilization
+FROM telemetry_events
+GROUP BY
+    base_station,
+    sector;
+
+The project can use ClickHouse replication for serving resilience.
+
 🧠 Behavioral Intelligence
-The long-term objective is to understand how each cell normally behaves.
-Instead of asking:
-"Is KPI > threshold?"
-the platform asks:
-"Is this behavior unusual for THIS cell?"
-For example:
-Cell 36
-────────────────────────
 
-Normal:
-RB Utilization      20–40%
-Active Users        5–15
-CQI                  8–12
+The intelligence layer moves beyond simple threshold rules.
 
-Current:
-RB Utilization      78%
-Active Users        18
-CQI                  4
+From this:
 
-                ↓
+RB Utilization > 80%
+        ↓
+      ALERT
 
-       ⚠️ Behavioral Anomaly
-Multiple anomalies can then contribute to a cell risk score.
-Anomaly Detection
-        │
-        ▼
-Feature Engineering
-        │
-        ▼
-Risk Scoring
-        │
-        ▼
-Cell Priority
-🛡️ Risk Scoring
-Instead of giving engineers hundreds of independent alerts:
-Cell 36 → ⚠️
-Cell 29 → 🔴
-Cell 148 → 🟢
-The platform can rank cells by risk.
-Example:
-Cell
+Toward this:
+
+Historical Behavior
+       +
+Current Behavior
+       +
+Multiple KPIs
+       ↓
+Behavioral Deviation
+       ↓
+Anomaly
+       ↓
 Risk Score
+       ↓
+Investigation Priority
+
+A baseline detector can use statistics such as:
+
+mean ± 3 × standard deviation
+
+for selected metrics.
+
+This is an MVP detector, not a production predictive model.
+
+🛡️ Risk Scoring
+
+The long-term goal is to reduce alert noise by prioritizing cells.
+
+Example:
+
+Cell
+
+Risk Score
+
 Status
+
 Site 29 / Sector 2
+
 92
+
 🔴 Critical
+
 Site 36 / Sector 2
+
 76
+
 🟠 High
+
 Site 148 / Sector 1
+
 24
+
 🟢 Normal
-This transforms monitoring from:
-Alert everything
-into:
-Investigate what matters first.
-🖥️ Cluster Topology
-The platform runs across five physical machines connected through a Tailscale mesh and orchestrated using Docker Swarm.
-Mermaid
-flowchart TB
 
-    subgraph M1["🖥️ zzzz-vm<br/>Manager • Leader"]
-        K1["Kafka-1"]
-        Z1["ZooKeeper-1"]
-        S1["Spark Master-1"]
-        NN1["NameNode Active"]
-        W1["Spark Worker-1"]
-    end
+This turns hundreds of low-value alerts into a ranked engineering queue.
 
-    subgraph M2["🖥️ abdullah<br/>Manager"]
-        K2["Kafka-2"]
-        Z2["ZooKeeper-2"]
-        S2["Spark Master-2"]
-        NN2["NameNode Standby"]
-        W2["Spark Worker-2"]
-    end
-
-    subgraph M3["🖥️ sharawy-vmware-virtual-platform<br/>Manager"]
-        K3["Kafka-3"]
-        Z3["ZooKeeper-3"]
-        J3["JournalNode-3"]
-        W3["Spark Worker-3"]
-    end
-
-    subgraph W4["🖥️ ahmed-vmware-virtual-platform<br/>Worker"]
-        K4["Kafka-4"]
-        CH1["ClickHouse-1"]
-        W4S["Spark Worker-4"]
-    end
-
-    subgraph W5["🖥️ victus<br/>Worker"]
-        K5["Kafka-5"]
-        CH2["ClickHouse-2"]
-        GF["Grafana"]
-        PR["Prometheus"]
-        AF["Airflow"]
-        W5S["Spark Worker-5"]
-    end
-
-    M1 <--> M2
-    M2 <--> M3
-    M1 <--> M3
-🖥️ Node Roles
-Machine
-Swarm Role
-Main Services
-zzzz-vm
-Manager / Leader
-Kafka-1, ZooKeeper-1, Spark Master-1, Active NameNode, Worker-1
-abdullah
-Manager
-Kafka-2, ZooKeeper-2, Spark Master-2, Standby NameNode, Worker-2
-sharawy-vmware-virtual-platform
-Manager
-Kafka-3, ZooKeeper-3, JournalNode-3, Worker-3
-ahmed-vmware-virtual-platform
-Worker
-Kafka-4, ClickHouse-1, Worker-4
-victus
-Worker
-Kafka-5, ClickHouse-2, Grafana, Prometheus, Airflow, Worker-5
-Important: Service placement is controlled using Docker Swarm placement constraints so that replicas are intentionally distributed across physical machines.
-🔐 High Availability Strategy
-The platform contains multiple layers of redundancy.
-                 ┌─────────────────────┐
-                 │     HA Strategy     │
-                 └──────────┬──────────┘
-                            │
-        ┌───────────────────┼───────────────────┐
-        │                   │                   │
-        ▼                   ▼                   ▼
-     Kafka                 HDFS                Spark
-     RF = 3                NN HA               2 Masters
-        │                   │                   │
-        ▼                   ▼                   ▼
-   Broker Failure       NN Failure         Master Failure
-
-                            │
-                            ▼
-
-                       ClickHouse
-                       Replication
-                            │
-                            ▼
-                     Data Availability
-🧪 Fault Tolerance Testing
-The objective is not simply to make the cluster run.
-The objective is to prove that it can survive failures.
-Kafka Failure
-Stop one Kafka broker:
-docker stop <kafka-container>
-Then inspect:
-kafka-topics.sh \
-  --bootstrap-server kafka1:9092 \
-  --describe \
-  --topic ran-telemetry
-Expected behavior:
-Failed broker
-     ↓
-Leader election
-     ↓
-Another ISR replica becomes Leader
-     ↓
-Producer / Consumer continues
-HDFS Failure
-Stop the Active NameNode:
-Active NameNode
-      ↓
-     FAIL
-      ↓
-ZKFC detects failure
-      ↓
-Standby NameNode
-      ↓
-New Active
-Spark Failure
-If one Spark worker fails:
-Spark Worker
-     ↓
-   FAIL
-     ↓
-Other Workers
-     ↓
-Continue processing
-ClickHouse Failure
-With replicated tables:
-ClickHouse-1
-     │
-     │ Replication
-     ▼
-ClickHouse-2
-If one replica becomes unavailable, the remaining replica can continue serving queries depending on the query/replica configuration.
 📊 Observability
+
 Grafana provides the operational view of the platform.
-The dashboard is intended to expose:
-Kafka
-Broker health
-Partition distribution
-Consumer lag
-Throughput
-Replication state
-Spark
-Streaming throughput
-Processing latency
-Active jobs
-Worker health
-HDFS
-DataNode health
-Storage utilization
-Replication status
-NameNode state
-RAN
-Cell activity
+
+Network view
+
+active users
+
+traffic/data volume
+
 RB utilization
-User count
-Data volume
+
 CQI
-Energy consumption
-Anomaly count
-Risk score
-🧰 Technology Stack
-Layer
-Technology
-Purpose
-📡 Data Source
-RAN / PM Dataset
-Network telemetry
-🐍 Producer
-Python
-CSV → simulated events
-⚡ Streaming
-Apache Kafka
-Distributed ingestion
-🐘 Data Lake
-Hadoop HDFS
-Durable raw storage
-🔥 Processing
-Apache Spark
-Streaming + Batch
-🗄️ Analytics
+
+RRC users
+
+energy consumption
+
+anomaly count
+
+risk score
+
+Cluster view
+
+Kafka broker health
+
+partition / ISR state
+
+Spark workers
+
+HDFS health
+
+ClickHouse health
+
+CPU / memory / network utilization
+
+Prometheus provides infrastructure/application metrics that feed the dashboards.
+
+🖥️ Cluster Topology
+
+The project runs across five real machines connected through a Tailscale mesh and orchestrated using Docker Swarm.
+
+<p align="center">
+  <img src="docs/assets/cluster-topology.png" alt="RAN Intelligence cluster topology" width="100%" />
+</p>
+
+Machine
+
+Swarm role
+
+Main responsibilities
+
+zzzz-vm
+
+Manager / Leader
+
+Kafka-1, ZooKeeper-1, Spark Master-1, HDFS Active NameNode, Worker-1
+
+abdullah
+
+Manager
+
+Kafka-2, ZooKeeper-2, Spark Master-2, HDFS Standby NameNode, Worker-2
+
+sharawy-vmware-virtual-platform
+
+Manager
+
+Kafka-3, ZooKeeper-3, JournalNode-3, Worker-3
+
+ahmed-vmware-virtual-platform
+
+Worker
+
+Kafka-4, ClickHouse-1, Worker-4
+
+victus
+
+Worker
+
+Kafka-5, ClickHouse-2, Grafana, Prometheus, Airflow, Worker-5
+
+Exact service placement is controlled with Swarm placement constraints so the distributed design is intentional rather than random.
+
+🌐 Why two network layers?
+
+Tailscale mesh
+      ↓
+Host-to-host connectivity
+      ↓
+Docker Swarm overlay network
+      ↓
+Service-to-service communication
+
+Tailscale connects the machines.
+Docker Swarm provides the application network used by containers.
+
+🔐 High Availability Strategy
+
+The platform demonstrates HA at multiple levels.
+
+                  HA
+                   │
+      ┌────────────┼────────────┐
+      ▼            ▼            ▼
+    Kafka         HDFS         Spark
+    RF=3        NN HA       Master recovery
+      │            │            │
+      └────────────┼────────────┘
+                   ▼
+               ClickHouse
+               Replication
+
+Kafka
+
+5 brokers
+
+replicated partitions
+
+leader election
+
+acks=all for the producer
+
+recommended min.insync.replicas=2
+
+HDFS
+
+Active / Standby NameNodes
+
+JournalNode quorum
+
+replicated DataNodes
+
+Spark
+
+two masters
+
+multiple workers
+
+recovery-oriented deployment
+
 ClickHouse
-Fast analytical queries
-🧠 Intelligence
-Python / ML
-Anomaly & behavioral analysis
-📊 Monitoring
-Grafana
-NOC dashboards
-📈 Metrics
-Prometheus
-Infrastructure metrics
-🔄 Orchestration
-Apache Airflow
-Scheduled workflows
-🐳 Infrastructure
+
+replicated analytical tables / replicas
+
 Docker Swarm
-Distributed deployment
-🌐 Networking
-Tailscale
-Private node-to-node connectivity
-🧭 Coordination
-ZooKeeper
-Kafka / HA coordination
+
+3 managers
+
+2 workers
+
+explicit service placement
+
+🧪 Fault-Tolerance Testing
+
+The objective is not merely to say HA.
+
+The objective is to demonstrate it.
+
+Kafka HA test
+
+Inspect the topic before failure.
+
+/opt/kafka/bin/kafka-topics.sh \
+  --describe \
+  --bootstrap-server kafka1:9092 \
+  --topic ran-telemetry
+
+Record:
+
+Leader
+Replicas
+ISR
+
+Stop one Kafka broker / physical node.
+
+Describe the topic again.
+
+Verify that affected partitions can elect an available in-sync replica.
+
+Continue producing telemetry and verify that the pipeline recovers.
+
+Expected behavior
+
+          BEFORE
+
+Leader
+  │
+  ├── Replica
+  └── Replica
+
+        ↓ Broker failure
+
+          AFTER
+
+Failed Broker ❌
+       ↓
+Leader Election
+       ↓
+Healthy ISR Replica
+       ↓
+New Leader ✅
+
+Important HA boundary
+
+With:
+
+RF = 3
+min.insync.replicas = 2
+acks = all
+
+one broker failure can still leave two replicas in-sync.
+
+If a failure pattern leaves fewer than the required in-sync replicas, Kafka may reject new writes rather than acknowledge data with insufficient redundancy.
+
+That is a safety property, not a failure of HA.
+
+🚀 Getting Started
+
+1. Prerequisites
+
+Install Docker on all five machines:
+
+curl -fsSL https://get.docker.com | sh
+sudo usermod -aG docker $USER
+newgrp docker
+
+Install Tailscale:
+
+curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up
+
+Verify connectivity with the machines' Tailscale addresses.
+
+2. Create the Swarm
+
+On the first manager:
+
+docker swarm init \
+  --advertise-addr <LEADER-TAILSCALE-IP>
+
+Join the remaining managers/workers using the generated join commands.
+
+Verify:
+
+docker node ls
+
+3. Label the Nodes
+
+The recommended deployment uses node labels for deterministic placement.
+
+Example:
+
+docker node update --label-add node_id=1 zzzz-vm
+docker node update --label-add node_id=2 abdullah
+docker node update --label-add node_id=3 sharawy-vmware-virtual-platform
+docker node update --label-add node_id=4 ahmed-vmware-virtual-platform
+docker node update --label-add node_id=5 victus
+
+4. Deploy the Stack
+
+docker stack deploy \
+  -c docker-stack.yml \
+  ran-platform
+
+Inspect services:
+
+docker stack services ran-platform
+docker stack ps ran-platform --no-trunc
+
+5. Create the Kafka Topic
+
+Example:
+
+/opt/kafka/bin/kafka-topics.sh \
+  --create \
+  --bootstrap-server kafka1:9092 \
+  --topic ran-telemetry \
+  --partitions 5 \
+  --replication-factor 3
+
+If you intentionally use 10 partitions in the deployed environment, change only the partition count; the application does not depend on a fixed partition number.
+
+Set the topic-level ISR requirement:
+
+/opt/kafka/bin/kafka-configs.sh \
+  --bootstrap-server kafka1:9092 \
+  --entity-type topics \
+  --entity-name ran-telemetry \
+  --alter \
+  --add-config min.insync.replicas=2
+
+Verify:
+
+/opt/kafka/bin/kafka-topics.sh \
+  --describe \
+  --bootstrap-server kafka1:9092 \
+  --topic ran-telemetry
+
+6. Run the Producer
+
+pip install -r Kafka/producer/requirements.txt
+
+Then:
+
+export KAFKA_BROKERS="kafka1:9092,kafka2:9092,kafka3:9092,kafka4:9092,kafka5:9092"
+export DATA_DIR="./data/Raw"
+python Kafka/producer/producer.py
+
+The producer:
+
+Read CSV
+  ↓
+Normalize
+  ↓
+Parse timestamp
+  ↓
+Sort
+  ↓
+Group by timestamp
+  ↓
+Create JSON event
+  ↓
+Publish to Kafka
+  ↓
+Wait / replay next timestamp
+
+7. Run Spark Streaming
+
+spark-submit \
+  Spark/streaming/ran_streaming.py
+
+The application consumes ran-telemetry and feeds the real-time processing path.
+
 📁 Repository Structure
+
 ran-intelligence-platform/
 │
 ├── README.md
@@ -736,282 +1027,177 @@ ran-intelligence-platform/
 │
 └── docs/
     └── assets/
+        ├── ran-intelligence-cover.png
         ├── architecture-overview.png
         ├── data-flow.png
         └── cluster-topology.png
-🚀 Getting Started
-1. Prepare the Nodes
-Install Docker on all five machines.
-curl -fsSL https://get.docker.com | sh
 
-sudo usermod -aG docker $USER
+📈 Observability & Operations
 
-newgrp docker
-Install Tailscale:
-curl -fsSL https://tailscale.com/install.sh | sh
-
-sudo tailscale up
-2. Create the Docker Swarm
-On the leader:
-docker swarm init \
-  --advertise-addr <LEADER_TAILSCALE_IP>
-Check:
-docker node ls
-Join the remaining nodes using the worker/manager tokens generated by Swarm.
-3. Label the Nodes
-Example:
-docker node update \
-  --label-add node_id=1 \
-  zzzz-vm
-docker node update \
-  --label-add node_id=2 \
-  abdullah
-docker node update \
-  --label-add node_id=3 \
-  sharawy-vmware-virtual-platform
-docker node update \
-  --label-add node_id=4 \
-  ahmed-vmware-virtual-platform
-docker node update \
-  --label-add node_id=5 \
-  victus
-Verify:
-docker node inspect <NODE> \
-  --format '{{.Spec.Labels}}'
-4. Deploy the Stack
-From the Swarm leader:
-docker stack deploy \
-  -c docker-stack.yml \
-  ran-platform
-Check services:
-docker stack services ran-platform
-Check tasks:
-docker stack ps ran-platform
-5. Create the Kafka Topic
-The main telemetry topic is:
-ran-telemetry
-Create it with:
-kafka-topics.sh \
-  --bootstrap-server kafka1:9092 \
-  --create \
-  --topic ran-telemetry \
-  --partitions 5 \
-  --replication-factor 3
-Verify:
-kafka-topics.sh \
-  --bootstrap-server kafka1:9092 \
-  --describe \
-  --topic ran-telemetry
-Expected:
-PartitionCount: 5
-ReplicationFactor: 3
-6. Start the Producer
-Example:
-export KAFKA_BROKERS="kafka1:9092,kafka2:9092,kafka3:9092"
-
-export DATA_DIR="./data/Raw"
-
-python Kafka/producer/producer.py
-The producer will:
-Read CSV
-   ↓
-Normalize columns
-   ↓
-Parse timestamps
-   ↓
-Group records
-   ↓
-Generate event
-   ↓
-Send to Kafka
-   ↓
-Wait
-   ↓
-Generate next event
-7. Start Spark Streaming
-spark-submit \
-  Spark/streaming/ran_streaming.py
-The streaming job consumes:
-ran-telemetry
-and processes telemetry continuously.
-🔎 Useful Commands
 Swarm
+
 docker node ls
 docker stack services ran-platform
-docker stack ps ran-platform
-Kafka
-docker service ls | grep kafka
+docker stack ps ran-platform --no-trunc
+
+Logs
+
 docker service logs -f ran-platform_kafka1
-Check topic
-kafka-topics.sh \
-  --bootstrap-server kafka1:9092 \
+docker service logs -f ran-platform_grafana
+docker service logs -f ran-platform_clickhouse
+
+Kafka
+
+/opt/kafka/bin/kafka-topics.sh \
+  --list \
+  --bootstrap-server kafka1:9092
+
+/opt/kafka/bin/kafka-topics.sh \
   --describe \
+  --bootstrap-server kafka1:9092 \
   --topic ran-telemetry
-Grafana
-http://<node-ip>:3000
-Prometheus
-http://<node-ip>:9090
-🧪 What We Want to Prove
-This project is not just a collection of Big Data technologies.
-We want to demonstrate a complete engineering lifecycle:
-                 RAW DATA
-                    │
-                    ▼
-              DATA INGESTION
-                    │
-                    ▼
-              DISTRIBUTED BUS
-                    │
-                    ▼
-             REAL-TIME PROCESSING
-                    │
-                    ▼
-              DATA LAKE STORAGE
-                    │
-                    ▼
-             ANALYTICAL STORAGE
-                    │
-                    ▼
-             BEHAVIORAL ANALYSIS
-                    │
-                    ▼
-               RISK SCORING
-                    │
-                    ▼
-              NOC VISIBILITY
-                    │
-                    ▼
-             PROACTIVE ACTION
-🎯 Current MVP
-The current project focuses on:
-✅ RAN telemetry ingestion
-✅ CSV → simulated streaming
-✅ Kafka distributed ingestion
-✅ Kafka replication
-✅ Spark streaming
-✅ HDFS raw storage
-✅ ClickHouse analytical storage
-✅ Anomaly detection foundation
-✅ Grafana monitoring
-✅ Docker Swarm deployment
-✅ HA / fault-tolerance testing
-Future iterations can extend this into:
-Historical Incidents
+
+🔮 Future Vision
+
+The current platform is the foundation for a stronger predictive network-operations system.
+
+Historical Telemetry
         +
-Telemetry History
+Current Streaming Telemetry
         +
 Cell Behavioral Profiles
         +
-ML Models
+Incident History
         ↓
-Failure Prediction
+🧠 Machine Learning
         ↓
-Proactive Maintenance
-🌟 Expected Impact
-The ultimate objective is to move network operations from:
-REACTIVE
-   │
-   ▼
-Alarm
-   │
-   ▼
-Engineer investigates
-   │
-   ▼
-Problem already affects users
-to:
-PROACTIVE
-   │
-   ▼
-Behavior changes
-   │
-   ▼
-Anomaly detected
-   │
-   ▼
-Risk score increases
-   │
-   ▼
-NOC receives priority
-   │
-   ▼
-Engineer acts
-   │
-   ▼
-Failure potentially prevented
+Failure / Degradation Prediction
+        ↓
+🛡️ Risk Scoring
+        ↓
+🚨 Early Warning
+        ↓
+👨‍💻 NOC Action
+
+Potential extensions:
+
+🔮 cell failure prediction
+
+📈 traffic forecasting
+
+⚡ energy optimization
+
+🧠 root-cause analysis
+
+📡 cell health scoring
+
+🔄 mobility and handover intelligence
+
+🛠️ predictive maintenance
+
+🚨 intelligent alert routing
+
+✅ What Success Looks Like
+
+The final demonstration should tell one continuous story:
+
+📡 A cell produces telemetry
+        ↓
+🐍 The producer replays it like a live stream
+        ↓
+⚡ Kafka distributes and replicates it
+        ↓
+🔥 Spark processes it in real time
+        ↓
+🐘 HDFS preserves the raw history
+        ↓
+🧠 Analytics identifies abnormal behavior
+        ↓
+🛡️ Risk scoring prioritizes the cell
+        ↓
+🗄️ ClickHouse serves the results
+        ↓
+📊 Grafana shows the NOC the story
+        ↓
+💡 Engineers act before the problem grows
+
+The goal is not to build a collection of tools. The goal is to build a system that turns network telemetry into a decision.
+
 👥 Team
+
 Role
-Member
-Responsibilities
-👑 Infrastructure & Architecture
-Mohamed
-Architecture, Swarm, deployment, Kafka-1, Spark Master-1
-🐘 HDFS & HA
-Bodok
-HDFS HA, NameNode Standby, JournalNodes
+
+Core responsibility
+
+👑 Architecture & Infrastructure
+
+Distributed architecture, Swarm, deployment, HA design
+
+🐘 HDFS & Storage
+
+HDFS HA, JournalNodes, DataNodes, data-lake design
+
 ⚡ Kafka & Streaming
-Abdullah
-Kafka, ZooKeeper, streaming pipeline
-🗄️ Data & ClickHouse
-Sharawy
-ClickHouse, Kafka, Spark Worker
+
+Kafka cluster, ingestion, producer, Spark streaming
+
+🗄️ Data Engineering
+
+ClickHouse, analytical serving, data modeling
+
 📊 Monitoring & Orchestration
-Amr
-Grafana, Prometheus, Airflow, ClickHouse
-📚 Architecture Decisions
-Why Kafka?
-Because telemetry is naturally event-oriented and Kafka provides:
-Distributed ingestion
-Partitioning
-Replication
-Consumer groups
-Replayable events
-Fault tolerance
-Why HDFS?
-Because raw telemetry should remain available for:
-Historical analysis
-Reprocessing
-Feature engineering
-Model training
-Why Spark?
-Because the platform requires both:
-Real-time processing
-Historical batch processing
-Why ClickHouse?
-Because the final telemetry layer needs fast analytical queries and dashboard workloads.
-Why Docker Swarm?
-Because the project is deployed across five physical machines and we need:
-Service orchestration
-Placement constraints
-Overlay networking
-Replica management
-Failure testing
-Why Tailscale?
-Because the five physical machines are connected through a private mesh network without requiring direct public exposure.
+
+Grafana, Prometheus, Airflow, operational observability
+
 ⚠️ Development Status
-Status: 🚧 Active Development
-The platform currently represents a working distributed infrastructure and development architecture.
-Some production-level capabilities still require additional work:
-Production credential management
-Persistent distributed storage strategy
-Kafka security
-TLS
-Dedicated exporters
-Production ML models
-Automated deployment
-Complete HDFS HA bootstrap automation
-Complete Airflow deployment
-Advanced alert routing
+
+🟡 Development / Academic Prototype
+
+The platform is being developed as a distributed RAN intelligence demonstration.
+
+Implemented / actively integrated
+
+✅ Five-node Docker Swarm environment
+
+✅ Distributed Kafka cluster
+
+✅ Timestamp-based telemetry replay
+
+✅ Spark streaming architecture
+
+✅ HDFS data-lake architecture
+
+✅ ClickHouse analytical layer
+
+✅ Grafana / Prometheus observability
+
+✅ Baseline anomaly detection
+
+✅ Kafka HA testing
+
+Still requiring production hardening
+
+⏳ production credentials and secrets
+
+⏳ TLS / authentication
+
+⏳ dedicated metrics exporters
+
+⏳ fully automated HDFS HA bootstrap
+
+⏳ complete Spark HA automation
+
+⏳ production-grade ML models
+
+⏳ distributed persistent storage strategy
+
+⏳ CI/CD and automated validation
+
 📜 License
-This project is developed as an educational and engineering demonstration of a distributed RAN intelligence platform.
-�
 
-📡 RAN Behavioral Intelligence
-From Telemetry → Intelligence → Action
-Analyze · Detect · Prioritize · Predict · Prevent
-�
+This project is developed for educational and engineering demonstration purposes.
 
-
-⭐ Built with Apache Kafka · Spark · Hadoop · ClickHouse · Python · Docker Swarm
-�
-```
+<p align="center">
+  <strong>📡 RAN Behavioral Intelligence</strong><br/>
+  <em>From Telemetry → Intelligence → Action</em>
+</p>
