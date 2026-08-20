@@ -602,6 +602,55 @@ services:
         constraints:
           - node.labels.node_id == 3
 
+
+  # =========================================================
+  # KAFKA CONNECT
+  # =========================================================
+
+  kafka-connect:
+    image: confluentinc/cp-kafka-connect:7.5.0
+    hostname: kafka-connect
+
+    ports:
+      - "8083:8083"
+
+    environment:
+      CONNECT_BOOTSTRAP_SERVERS: kafka1:9092,kafka2:9092,kafka3:9092,kafka4:9092,kafka5:9092
+      CONNECT_GROUP_ID: ran-connect-cluster
+      CONNECT_CONFIG_STORAGE_TOPIC: _connect-configs
+      CONNECT_OFFSET_STORAGE_TOPIC: _connect-offsets
+      CONNECT_STATUS_STORAGE_TOPIC: _connect-status
+      CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: 3
+      CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 3
+      CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 3
+      CONNECT_KEY_CONVERTER: org.apache.kafka.connect.storage.StringConverter
+      CONNECT_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE: "false"
+      CONNECT_INTERNAL_KEY_CONVERTER: org.apache.kafka.connect.storage.StringConverter
+      CONNECT_INTERNAL_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
+      CONNECT_REST_ADVERTISED_HOST_NAME: kafka-connect
+      CONNECT_REST_PORT: 8083
+      CONNECT_PLUGIN_PATH: /usr/share/java,/usr/share/confluent-hub-components
+
+    configs:
+      - source: hadoop_core_site
+        target: /etc/hadoop/conf/core-site.xml
+      - source: hadoop_hdfs_site
+        target: /etc/hadoop/conf/hdfs-site.xml
+      - source: hadoop_workers
+        target: /etc/hadoop/conf/workers
+
+    networks:
+      - ran-network
+
+    command:
+      - bash
+      - -c
+      - |
+        echo "Installing HDFS 3 Connector..."
+        confluent-hub install --no-prompt confluentinc/kafka-connect-hdfs3:latest
+        exec /etc/confluent/docker/run
+
 configs:
   zookeeper_config:
     file: ./configs/zookeeper/zoo.cfg
